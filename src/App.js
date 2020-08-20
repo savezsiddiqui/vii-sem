@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import TimeTable from './components/TimeTable';
+import Setup from './components/Setup';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const initialState = () => {
+	const savedMode = JSON.parse(localStorage.getItem('time-table'));
+	return savedMode || null;
+};
+
+const App = () => {
+	const [local, setLocal] = useState(initialState());
+
+	useEffect(() => {
+		localStorage.setItem('time-table', JSON.stringify(local));
+	}, [local]);
+
+	return (
+		<div className='dark-mode'>
+			{local === null ? <Setup setLocal={setLocal} /> : <TimeTable local={local} setLocal={setLocal} />}
+		</div>
+	)
 }
 
 export default App;
