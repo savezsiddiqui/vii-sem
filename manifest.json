@@ -1,0 +1,16 @@
+{
+  "short_name": "VII SEM",
+  "name": "VII SEM",
+  "icons": [
+    {
+      "src": "download.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#000000"
+}
